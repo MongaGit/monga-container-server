@@ -13,11 +13,8 @@ jobs:
       uses: MrSquaare/ssh-setup-action@v1
       with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           
     - name: Clone repository
       run: git clone git@github.com:MongaGit/monga-container-server.git
 
-      
