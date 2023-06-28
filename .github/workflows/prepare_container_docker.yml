@@ -1,0 +1,19 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  clone:
+    name: Clone
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup SSH
+      uses: MrSquaare/ssh-setup-action@v1
+      with:
+          host: github.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+    - name: Clone repository
+      run: git clone git@github.com:MongaGit/monga-container-server.git
