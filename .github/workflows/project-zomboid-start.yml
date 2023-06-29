@@ -1,12 +1,12 @@
-name: Deploy Container Docker
+name: Project-Zomboid Start Server
 on: workflow_dispatch
 
 jobs:
   clone:
-    name: Container Docker
+    name: Project-Zomboid Start Server
     runs-on: ubuntu-latest
     steps:
-    - name: Clone MongaGit/monga-container-server 
+    - name: Project-Zomboid Start Server
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.HOST }}
@@ -14,41 +14,16 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          git clone git@github.com:MongaGit/monga-container-server.git
+            echo "Pull the latest image"
+            docker pull renegademaster/zomboid-dedicated-server:latest
 
-    - name: Install Container Docker
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-          sudo apt update
-          sudo apt upgrade
-          sudo apt install apt-transport-https ca-certificates curl software-properties-common
-          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-          sudo apt update
-          sudo apt install docker-ce docker-ce-cli containerd.io
-          curl -fsSL https://get.docker.com | bash
+            echo "Make two folders"
+            mkdir ZomboidConfig ZomboidDedicatedServer
 
-    - name: Install Docker-Compose Orchestration
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-            sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            sudo usermod -aG docker $USER
-
-
-
-
-
-
-
-
+            echo "Run the server"
+            docker run --detach \
+                --mount type=bind,source="$(pwd)/game-data/project-zomboid/data",target=/home/steam/ZomboidDedicatedServer \
+                --mount type=bind,source="$(pwd)/game-data/project-zomboid/config",target=/home/steam/Zomboid \
+                --publish 16261:16261/udp --publish 16262:16262/udp \
+                --name monga-project-zomboid \
+                docker.io/renegademaster/zomboid-dedicated-server:latest \
