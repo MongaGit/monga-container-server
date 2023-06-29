@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   clone:
-    name: Deploy Container Docker
+    name: Container Docker
     runs-on: ubuntu-latest
     steps:
     - name: Clone MongaGit/monga-container-server 
