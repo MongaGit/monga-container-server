@@ -15,7 +15,6 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           git clone git@github.com:MongaGit/monga-container-server.git
-          git clone git@github.com:MongaGit/game-data.git
 
     - name: Install Container Docker
       uses: appleboy/ssh-action@v0.1.10
