@@ -13,5 +13,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+    - name: Clone GitHub repository
+      run: git clone git@github.com:MongaGit/monga-container-server.git
 
