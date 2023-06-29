@@ -14,5 +14,5 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
     - name: Clone GitHub repository
-      run: git clone git@github.com:MongaGit/monga-container-server.git
+      run: sudo git clone git@github.com:MongaGit/monga-container-server.git
 
