@@ -19,14 +19,14 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/monga-container-server/project-zomboid
-            echo "ADMINPASSWORD=${{ vars.project-zomboid.ADMINPASSWORD }}" >> .env
-            echo "DEBUG=${{ secrets.DEBUG }}" >> .env
-            echo "MODFOLDERS=${{ secrets.project-zomboid.MODFOLDERS }}" >> .env
-            echo "MOD_IDS=${{ vars.MOD_IDS }}" >> .env
-            echo "NOSTEAM=${{ vars.NOSTEAM }}" >> .env
-            echo "PORT=${{ vars.PORT }}" >> .env
-            echo "SERVERNAME=${{ vars.SERVERNAME }}" >> .env
-            echo "STEAMVAC=${{ vars.STEAMVAC }}" >> .env
-            echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
+            echo "ADMINPASSWORD=${{ secrets.PROJECT_ZOMBOID_ADMINPASSWORD }}" >> .env
+            echo "DEBUG=${{ secrets.PROJECT_ZOMBOID_DEBUG }}" >> .env
+            echo "MODFOLDERS=${{ secrets.PROJECT_ZOMBOID_MODFOLDERS }}" >> .env
+            echo "MOD_IDS=${{ secrets.PROJECT_ZOMBOID_MOD_IDS }}" >> .env
+            echo "NOSTEAM=${{ secrets.PROJECT_ZOMBOID_NOSTEAM }}" >> .env
+            echo "PORT=${{ secrets.PROJECT_ZOMBOID_PORT }}" >> .env
+            echo "SERVERNAME=${{ secrets.PROJECT_ZOMBOID_SERVERNAME }}" >> .env
+            echo "STEAMVAC=${{ secrets.PROJECT_ZOMBOID_STEAMVAC }}" >> .env
+            echo "WORKSHOP_IDS=${{ secrets.PROJECT_ZOMBOID_WORKSHOP_IDS }}" >> .env
             echo "Docker-Compose Up | Project-Zomboid Server Starting"
             cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
