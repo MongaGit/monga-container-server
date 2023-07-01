@@ -29,7 +29,7 @@ jobs:
             echo "STEAMVAC=${{ secrets.PROJECT_ZOMBOID_STEAMVAC }}" >> .env
             echo "WORKSHOP_IDS=${{ secrets.PROJECT_ZOMBOID_WORKSHOP_IDS }}" >> .env
             echo "Docker-Compose Up | Project-Zomboid Server Starting"
-            cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
+            cd /home/monga/save-game-server/project-zomboid && docker-compose up -d
       
       - name: Delte .env File
         uses: appleboy/ssh-action@v0.1.10
