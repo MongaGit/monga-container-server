@@ -2,7 +2,8 @@ name: Deploy to Docker Container
 on: workflow_dispatch
 
 jobs:
-  deploy:
+  clone:
+    name: Project-Zomboid Start Server
     runs-on: ubuntu-latest
 
     steps:
@@ -30,4 +31,4 @@ jobs:
           echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
 
       - name: Start Docker Compose
-        run: docker-compose up -f project-zomboid/docker-compose.yml -d
+        run: docker-compose up -f /project-zomboid/docker-compose.yml -d
