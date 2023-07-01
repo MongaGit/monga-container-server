@@ -17,18 +17,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-
-      - name: Set up Docker Compose environment
-        run: |
-          echo "ADMINPASSWORD=${{ vars.ADMINPASSWORD }}" >> .env
-          echo "DEBUG=${{ vars.DEBUG }}" >> .env
-          echo "MODFOLDERS=${{ vars.MODFOLDERS }}" >> .env
-          echo "MOD_IDS=${{ vars.MOD_IDS }}" >> .env
-          echo "NOSTEAM=${{ vars.NOSTEAM }}" >> .env
-          echo "PORT=${{ vars.PORT }}" >> .env
-          echo "SERVERNAME=${{ vars.SERVERNAME }}" >> .env
-          echo "STEAMVAC=${{ vars.STEAMVAC }}" >> .env
-          echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
+          script: |
+            echo "ADMINPASSWORD=${{ vars.ADMINPASSWORD }}" >> .env
+            echo "DEBUG=${{ vars.DEBUG }}" >> .env
+            echo "MODFOLDERS=${{ vars.MODFOLDERS }}" >> .env
+            echo "MOD_IDS=${{ vars.MOD_IDS }}" >> .env
+            echo "NOSTEAM=${{ vars.NOSTEAM }}" >> .env
+            echo "PORT=${{ vars.PORT }}" >> .env
+            echo "SERVERNAME=${{ vars.SERVERNAME }}" >> .env
+            echo "STEAMVAC=${{ vars.STEAMVAC }}" >> .env
+            echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
 
       - name: Start Docker Compose
-        run: docker-compose up -f /project-zomboid/docker-compose.yml -d
+        run: cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
