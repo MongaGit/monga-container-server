@@ -1,4 +1,4 @@
-name: Project-Zomboid Start Server
+name: Project-Zomboid | Start Server
 on: workflow_dispatch
 
 jobs:

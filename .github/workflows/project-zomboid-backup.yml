@@ -1,16 +1,16 @@
-name: Teste
+name: Project-Zomboid | Backup save
 on: workflow_dispatch
 
 jobs:
   clone:
-    name: Teste
+    name: Connect to server
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up SSH key
+      - name: Git pull
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
