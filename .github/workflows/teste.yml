@@ -19,14 +19,14 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/monga-container-server/project-zomboid
-            echo "ADMINPASSWORD=${{ vars.project-zomboid.ADMINPASSWORD }}"
-            echo "DEBUG=${{ secrets.DEBUG }}"
-            echo "MODFOLDERS=${{ secrets.project-zomboid.MODFOLDERS }}"
-            echo "MOD_IDS=${{ vars.MOD_IDS }}"
-            echo "NOSTEAM=${{ vars.NOSTEAM }}"
-            echo "PORT=${{ vars.project-zomboid.PORT }}"
-            echo "SERVERNAME=${{ secrets.project-zomboid.SERVERNAME }}"
-            echo "STEAMVAC=${{ secrets.project-zomboid.STEAMVAC }}"
-            echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}"
+            echo "ADMINPASSWORD=${{ secrets.PROJECT_ZOMBOID_ADMINPASSWORD }}"
+            echo "DEBUG=${{ secrets.PROJECT_ZOMBOID_DEBUG }}"
+            echo "MODFOLDERS=${{ secrets.PROJECT_ZOMBOID_MODFOLDERS }}"
+            echo "MOD_IDS=${{ secrets.PROJECT_ZOMBOID_MOD_IDS }}"
+            echo "NOSTEAM=${{ secrets.PROJECT_ZOMBOID_NOSTEAM }}"
+            echo "PORT=${{ secrets.PROJECT_ZOMBOID_PORT }}"
+            echo "SERVERNAME=${{ secrets.PROJECT_ZOMBOID_SERVERNAME }}"
+            echo "STEAMVAC=${{ secrets.PROJECT_ZOMBOID_STEAMVAC }}"
+            echo "WORKSHOP_IDS=${{ secrets.PROJECT_ZOMBOID_WORKSHOP_IDS }}"
             echo "Docker-Compose Up | Project-Zomboid Server Starting"
             
