@@ -19,9 +19,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/monga-container-server/project-zomboid
-            echo "ADMINPASSWORD=${{ vars.ADMINPASSWORD }}" >> .env
-            echo "DEBUG=${{ vars.DEBUG }}" >> .env
-            echo "MODFOLDERS=${{ vars.MODFOLDERS }}" >> .env
+            echo "ADMINPASSWORD=${{ vars.project-zomboid.ADMINPASSWORD }}" >> .env
+            echo "DEBUG=${{ secrets.DEBUG }}" >> .env
+            echo "MODFOLDERS=${{ secrets.project-zomboid.MODFOLDERS }}" >> .env
             echo "MOD_IDS=${{ vars.MOD_IDS }}" >> .env
             echo "NOSTEAM=${{ vars.NOSTEAM }}" >> .env
             echo "PORT=${{ vars.PORT }}" >> .env
