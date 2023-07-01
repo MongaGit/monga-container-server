@@ -1,4 +1,4 @@
-name: Deploy to Docker Container
+name: Project-Zomboid Start Server
 on: workflow_dispatch
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up SSH key
+      - name: Docker-Compose Up Server
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
