@@ -15,15 +15,24 @@ jobs:
         port: ${{ secrets.PORT }}
 
     container:
-      image: danixu86/project-zomboid-dedicated-server:latest
-
-    env:
-        ADMINPASSWORD: ${{ vars.ADMINPASSWORD }}
-        DEBUG: ${{ vars.DEBUG }}
-        MODFOLDERS: ${{ vars.MODFOLDERS }}
-        MOD_IDS: ${{ vars.MOD_IDS }}
-        NOSTEAM: ${{ vars.NOSTEAM }}
-        PORT: ${{ vars.PORT }}
-        SERVERNAME: ${{ vars.SERVERNAME }}
-        STEAMVAC: ${{ vars.STEAMVAC }}
-        WORKSHOP_IDS: ${{ vars.WORKSHOP_IDS }}
+        image: danixu86/project-zomboid-dedicated-server:latest
+        volumes:
+        # Server data
+        - /home/monga/save-game-server/project-zomboid/data:/home/steam/Zomboid
+        # Workshop mods folder
+        - /home/monga/save-game-server/project-zomboid/workshop-mods:/home/steam/pz-dedicated/steamapps/workshop
+        env:
+            ADMINPASSWORD: ${{ vars.ADMINPASSWORD }}
+            DEBUG: ${{ vars.DEBUG }}
+            MODFOLDERS: ${{ vars.MODFOLDERS }}
+            MOD_IDS: ${{ vars.MOD_IDS }}
+            NOSTEAM: ${{ vars.NOSTEAM }}
+            PORT: ${{ vars.PORT }}
+            SERVERNAME: ${{ vars.SERVERNAME }}
+            STEAMVAC: ${{ vars.STEAMVAC }}
+            WORKSHOP_IDS: ${{ vars.WORKSHOP_IDS }}
+        ports:
+        - "16261:16261/udp"
+        - "16262:16262/udp"
+        - "27015:27015/tcp"
+            
