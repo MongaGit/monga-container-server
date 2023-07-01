@@ -1,30 +1,32 @@
-name: Project-Zomboid Start Server
+name: Deploy to Docker Container
 on: workflow_dispatch
 
 jobs:
   clone:
     name: Project-Zomboid Start Server
     runs-on: ubuntu-latest
+
     steps:
-    - name: Project-Zomboid Start Server
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      env:
-        ADMINPASSWORD: ${{ vars.ADMINPASSWORD }}
-        DEBUG: ${{ vars.DEBUG }}
-        MODFOLDERS: ${{ vars.MODFOLDERS }}
-        MOD_IDS: ${{ vars.MOD_IDS }}
-        NOSTEAM: ${{ vars.NOSTEAM }}
-        PORT: ${{ vars.PORT }}
-        SERVERNAME: ${{ vars.SERVERNAME }}
-        STEAMVAC: ${{ vars.STEAMVAC }}
-        WORKSHOP_IDS: ${{ vars.WORKSHOP_IDS }}
-
-        run: |
-          docker-compose -f project-zomboid/docker-compose.yml up -d\
-            --abort-on-container-exit
+      - name: Set up SSH key
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/monga/monga-container-server/project-zomboid
+            echo "ADMINPASSWORD=${{ vars.project-zomboid.ADMINPASSWORD }}" >> .env
+            echo "DEBUG=${{ secrets.DEBUG }}" >> .env
+            echo "MODFOLDERS=${{ secrets.project-zomboid.MODFOLDERS }}" >> .env
+            echo "MOD_IDS=${{ vars.MOD_IDS }}" >> .env
+            echo "NOSTEAM=${{ vars.NOSTEAM }}" >> .env
+            echo "PORT=${{ vars.PORT }}" >> .env
+            echo "SERVERNAME=${{ vars.SERVERNAME }}" >> .env
+            echo "STEAMVAC=${{ vars.STEAMVAC }}" >> .env
+            echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
+            echo "Docker-Compose Up | Project-Zomboid Server Starting"
+            cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
