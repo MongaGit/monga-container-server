@@ -18,6 +18,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            cd /home/monga/monga-container-server/project-zomboid
             echo "ADMINPASSWORD=${{ vars.ADMINPASSWORD }}" >> .env
             echo "DEBUG=${{ vars.DEBUG }}" >> .env
             echo "MODFOLDERS=${{ vars.MODFOLDERS }}" >> .env
@@ -27,6 +28,5 @@ jobs:
             echo "SERVERNAME=${{ vars.SERVERNAME }}" >> .env
             echo "STEAMVAC=${{ vars.STEAMVAC }}" >> .env
             echo "WORKSHOP_IDS=${{ vars.WORKSHOP_IDS }}" >> .env
-
-      - name: Start Docker Compose
-        run: cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
+            echo "Docker-Compose Up | Project-Zomboid Server Starting"
+            cd /home/monga/monga-container-server/project-zomboid && docker-compose up -d
