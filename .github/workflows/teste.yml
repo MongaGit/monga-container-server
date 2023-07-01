@@ -1,9 +1,9 @@
-name: Deploy to Docker Container
+name: Teste
 on: workflow_dispatch
 
 jobs:
   clone:
-    name: Project-Zomboid Start Server
+    name: Teste
     runs-on: ubuntu-latest
 
     steps:
