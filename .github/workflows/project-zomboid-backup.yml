@@ -1,4 +1,4 @@
-name: Project-Zomboid | Backup save
+name: Project-Zomboid | Backup
 on: workflow_dispatch
 
 jobs:
