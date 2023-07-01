@@ -14,7 +14,10 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
 
-      env:
+    container:
+      image: danixu86/project-zomboid-dedicated-server:latest
+
+    env:
         ADMINPASSWORD: ${{ vars.ADMINPASSWORD }}
         DEBUG: ${{ vars.DEBUG }}
         MODFOLDERS: ${{ vars.MODFOLDERS }}
@@ -24,7 +27,3 @@ jobs:
         SERVERNAME: ${{ vars.SERVERNAME }}
         STEAMVAC: ${{ vars.STEAMVAC }}
         WORKSHOP_IDS: ${{ vars.WORKSHOP_IDS }}
-
-        run: |
-          docker-compose -f project-zomboid/docker-compose.yml up -d\
-            --abort-on-container-exit
