@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   clone:
-    name: V Rising Start Server
+    name: Clone Repository
     runs-on: ubuntu-latest
 
     steps:
