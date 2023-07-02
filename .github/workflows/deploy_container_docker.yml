@@ -1,4 +1,4 @@
-name: '|Init Container|'
+name: '| Init Container |'
 on: workflow_dispatch
 
 jobs:
