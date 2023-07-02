@@ -1,4 +1,4 @@
-name: Deploy Container Docker
+name: '|Init Container|'
 on: workflow_dispatch
 
 jobs:

@@ -18,25 +18,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/monga/save-game-server/project-zomboid
-            echo "ADMINPASSWORD=${{ secrets.PROJECT_ZOMBOID_ADMINPASSWORD }}" >> .env
-            echo "DEBUG=${{ secrets.PROJECT_ZOMBOID_DEBUG }}" >> .env
-            echo "MODFOLDERS=${{ secrets.PROJECT_ZOMBOID_MODFOLDERS }}" >> .env
-            echo "MOD_IDS=${{ secrets.PROJECT_ZOMBOID_MOD_IDS }}" >> .env
-            echo "NOSTEAM=${{ secrets.PROJECT_ZOMBOID_NOSTEAM }}" >> .env
-            echo "PORT=${{ secrets.PROJECT_ZOMBOID_PORT }}" >> .env
-            echo "SERVERNAME=${{ secrets.PROJECT_ZOMBOID_SERVERNAME }}" >> .env
-            echo "STEAMVAC=${{ secrets.PROJECT_ZOMBOID_STEAMVAC }}" >> .env
-            echo "WORKSHOP_IDS=${{ secrets.PROJECT_ZOMBOID_WORKSHOP_IDS }}" >> .env
-            echo "Docker-Compose Up | Project-Zomboid Server Starting"
-            cd /home/monga/save-game-server/project-zomboid && docker-compose up -d
-      
-      - name: Delte .env File
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            rm -rf .env
+            cd /home/monga/save-game-server/vrising
+            echo "Docker-Compose Up | V Rising Server Starting"
+            cd /home/monga/save-game-server/vrising && docker-compose up -d
