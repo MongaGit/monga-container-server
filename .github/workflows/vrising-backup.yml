@@ -21,6 +21,14 @@ jobs:
             cd /home/monga/save-game-server/project-zomboid
             git reset --hard HEAD
             git add .
-            git commit -m "PROJECT-ZOMBOID: Backup Monga data"
-            git push -u origin main --force
+
+            cd /home/monga/save-game-server/vrising/server/
+            git rm --cached GameAssembly.dll 
+
+            cd /home/monga/save-game-server/vrising/server/VRisingServer_Data/
+            git rm --cached globalgamemanagers.assets
+
+
+            git commit --amend -CHEAD -m "VRISING: Backup Monga data"
+            git push origin main --force
             
