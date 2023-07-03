@@ -19,14 +19,14 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/save-game-server/minecraft/mods
-            echo "EULA=${{ secrets.MINECRAFT_EULA}}" >> .env
-            echo "RCON_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env
-            echo "SERVER_NAME=${{ secrets.MINECRAFT_SERVER_NAME}}" >> .env
-            echo "DIFFICULTY=${{ secrets.MINECRAFT_DIFFICULTY}}" >> .env
-            echo "MAX_PLAYERS=${{ secrets.MINECRAFT_MAX_PLAYERS}}" >> .env
-            echo "MOTD=${{ secrets.MINECRAFT_MOTD}}" >> .env
-            echo "ICON=${{ secrets.MINECRAFT_ICON}}" >> .env
-            echo "CF_API_KEY: ${{secrets.MINECRAFT_CF_API_KEY}}" >> .env
+            echo "EULA=${{secrets.MINECRAFT_EULA}}" >> .env
+            echo "RCON_PASSWORD='${{secrets.MINECRAFT_RCON_PASSWORD}}'" >> .env
+            echo "SERVER_NAME='${{secrets.MINECRAFT_SERVER_NAME}}'" >> .env
+            echo "DIFFICULTY=${{secrets.MINECRAFT_DIFFICULTY}}" >> .env
+            echo "MAX_PLAYERS=${{secrets.MINECRAFT_MAX_PLAYERS}}" >> .env
+            echo "MOTD='${{secrets.MINECRAFT_MOTD}}'" >> .env
+            echo "ICON='${{secrets.MINECRAFT_ICON}}'" >> .env
+            echo "CF_API_KEY:'${{secrets.MINECRAFT_CF_API_KEY}}'" >> .env
             echo "Docker-Compose Up | Minecraft Server Starting"
             cd /home/monga/save-game-server/minecraft/mods && docker-compose up -d
       
