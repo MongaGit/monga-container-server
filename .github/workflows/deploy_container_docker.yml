@@ -1,4 +1,4 @@
-name: 'ɪɴɪᴛ ᴄᴏɴᴛᴀɪɴᴇʀ'
+name: '[Deploy Container Docker]'
 on: workflow_dispatch
 
 jobs:

@@ -1,4 +1,4 @@
-name: V Rising | Backup
+name: Minecraft | Stop
 on: workflow_dispatch
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Git pull
+      - name: Docker-Compose Down
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
@@ -19,16 +19,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/save-game-server/project-zomboid
-            git reset --hard HEAD
-            git add .
-
-            cd /home/monga/save-game-server/vrising/server/
-            git rm --cached GameAssembly.dll 
-
-            cd /home/monga/save-game-server/vrising/server/VRisingServer_Data/
-            git rm --cached globalgamemanagers.assets
-
-
-            git commit --amend -CHEAD
-            git push origin main --force
+            echo "Docker-Compose Up | Project-Zomboid Server Starting"
+            cd /home/monga/save-game-server/project-zomboid && docker-compose down
             
