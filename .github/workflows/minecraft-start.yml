@@ -27,6 +27,10 @@ jobs:
             echo "MOTD='${{secrets.MINECRAFT_MOTD}}'" >> .env
             echo "ICON='${{secrets.MINECRAFT_ICON}}'" >> .env
             echo "CF_API_KEY:'${{secrets.MINECRAFT_CF_API_KEY}}'" >> .env
+
+            echo "TYPE='AUTO_CURSEFORGE'" >> .env
+            echo "CF_SLUG='all-the-mods-6-to-the-sky-atm6s'" >> .env
+
             echo "Docker-Compose Up | Minecraft Server Starting"
             cd /home/monga/save-game-server/minecraft/mods && docker-compose up -d
       
