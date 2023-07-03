@@ -26,6 +26,7 @@ jobs:
             echo "MINECRAFT_MAX_PLAYERS=${{ secrets.MINECRAFT_MAX_PLAYERS}}" >> .env
             echo "MINECRAFT_MOTD=${{ secrets.MINECRAFT_MOTD}}" >> .env
             echo "MINECRAFT_ICON=${{ secrets.MINECRAFT_ICON}}" >> .env
+            echo "CF_API_KEY: ${{secrets.MINECRAFT_CF_API_KEY}}" >> .env
             echo "Docker-Compose Up | Minecraft Server Starting"
             cd /home/monga/save-game-server/minecraft/mods && docker-compose up -d
       
