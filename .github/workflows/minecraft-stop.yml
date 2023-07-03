@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/monga/save-game-server/project-zomboid
-            echo "Docker-Compose Up | Project-Zomboid Server Starting"
-            cd /home/monga/save-game-server/project-zomboid && docker-compose down
+            cd /home/monga/save-game-server/minecraft
+            echo "Docker-Compose Up | Minecraft Server Starting"
+            cd /home/monga/save-game-server/minecraft && docker-compose down
             
