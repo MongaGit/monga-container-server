@@ -27,7 +27,7 @@ jobs:
             echo "MINECRAFT_MOTD=${{ secrets.MINECRAFT_MOTD}}" >> .env
             echo "MINECRAFT_ICON=${{ secrets.MINECRAFT_ICON}}" >> .env
             echo "Docker-Compose Up | Minecraft Server Starting"
-            cd /home/monga/save-game-server/minecraft/mods && docker-compose up -d --build
+            cd /home/monga/save-game-server/minecraft/mods && docker-compose up -d
       
       - name: Delte .env File
         uses: appleboy/ssh-action@v0.1.10
@@ -39,3 +39,4 @@ jobs:
           script: |
             rm -rf .env
             cd /home/monga/save-game-server/minecraft/mods && rm -rf .env
+
