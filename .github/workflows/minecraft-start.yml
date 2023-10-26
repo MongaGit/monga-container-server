@@ -20,7 +20,10 @@ jobs:
           script: |
             cd /home/monga/save-game-server/minecraft/
             echo "MINECRAFT_EULA=${{ secrets.MINECRAFT_EULA}}" >> .env
-            echo "MINECRAFT_RCON_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env
+            echo "MINECRAFT_RCON_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env   
+            echo "RWA_RCON_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env
+            echo "RWA_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env
+            echo "RCON_PASSWORD=${{ secrets.MINECRAFT_RCON_PASSWORD}}" >> .env
             echo "MINECRAFT_SERVER_NAME=${{ secrets.MINECRAFT_SERVER_NAME}}" >> .env
             echo "MINECRAFT_DIFFICULTY=${{ secrets.MINECRAFT_DIFFICULTY}}" >> .env
             echo "MINECRAFT_MAX_PLAYERS=${{ secrets.MINECRAFT_MAX_PLAYERS}}" >> .env
