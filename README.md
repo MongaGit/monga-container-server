@@ -5,7 +5,6 @@
 
 - **Docker Container**
 ```Shell
-# Docker Container
 sudo apt update
 sudo apt upgrade
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
