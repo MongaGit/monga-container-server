@@ -42,8 +42,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            rm -rf .env
-            cd /home/monga/monga-container-server/project-zomboid && rm -rf .env
+            #rm -rf .env
+            #cd /home/monga/monga-container-server/project-zomboid && rm -rf .env
             
 
 
