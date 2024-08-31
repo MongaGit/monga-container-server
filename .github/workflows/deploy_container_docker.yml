@@ -14,8 +14,8 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          git clone git@github.com:MongaGit/monga-container-server.git
-          git clone git@github.com:MongaGit/save-game-server.git
+          git clone https://github.com/MongaGit/monga-container-server.git
+          git clone https://github.com/MongaGit/save-game-server.git
 
     - name: Install Container Docker
       uses: appleboy/ssh-action@v0.1.10
