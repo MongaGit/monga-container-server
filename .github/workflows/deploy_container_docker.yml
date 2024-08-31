@@ -6,17 +6,6 @@ jobs:
     name: Container Docker
     runs-on: ubuntu-latest
     steps:
-    - name: Clone MongaGit/monga-container-server 
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-          git clone https://github.com/MongaGit/monga-container-server.git
-          git clone https://github.com/MongaGit/save-game-server.git
-
     - name: Install Container Docker
       uses: appleboy/ssh-action@v0.1.10
       with:
@@ -46,10 +35,15 @@ jobs:
             sudo chmod +x /usr/local/bin/docker-compose
             sudo usermod -aG docker $USER
 
-
-
-
-
-
+    - name: Clone MongaGit/monga-container-server 
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          git clone https://github.com/MongaGit/monga-container-server.git
+          git clone https://github.com/MongaGit/save-game-server.git
 
 
