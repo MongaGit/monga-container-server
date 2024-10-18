@@ -1,0 +1,23 @@
+name: Valheim | Start
+on: workflow_dispatch
+
+jobs:
+  clone:
+    name: Clone Repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Docker-Compose Up Server
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/monga/save-game-server/valheim
+            echo "Docker-Compose Up | Valheim Server Starting"
+            cd /home/monga/save-game-server/valheim && docker-compose up -d

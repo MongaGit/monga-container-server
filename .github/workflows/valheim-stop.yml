@@ -1,0 +1,23 @@
+name: Valheim | Stop
+on: workflow_dispatch
+
+jobs:
+  clone:
+    name: Connect to server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Docker-Compose Down
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/monga/save-game-server/valheim
+            echo "Docker-Compose Down | Valheim Server Stopping"
+            cd /home/monga/save-game-server/valheim && docker-compose down
