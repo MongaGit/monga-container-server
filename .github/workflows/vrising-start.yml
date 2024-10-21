@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Docker-Compose Up Server
+      - name: docker compose Up Server
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
@@ -19,5 +19,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/save-game-server/vrising
-            echo "Docker-Compose Up | V Rising Server Starting"
-            cd /home/monga/save-game-server/vrising && docker-compose up -d
+            echo "docker compose Up | V Rising Server Starting"
+            cd /home/monga/save-game-server/vrising && docker compose up -d

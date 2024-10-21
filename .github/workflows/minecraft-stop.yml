@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Docker-Compose Down
+      - name: docker compose Down
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
@@ -19,6 +19,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/save-game-server/minecraft
-            echo "Docker-Compose Up | Minecraft Server Starting"
-            cd /home/monga/save-game-server/minecraft && docker-compose down
+            echo "docker compose Up | Minecraft Server Starting"
+            cd /home/monga/save-game-server/minecraft && docker compose down
             

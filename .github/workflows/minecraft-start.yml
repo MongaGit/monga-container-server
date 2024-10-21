@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Docker-Compose Up Server
+      - name: docker compose Up Server
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
@@ -29,8 +29,8 @@ jobs:
             echo "MINECRAFT_MAX_PLAYERS=${{ secrets.MINECRAFT_MAX_PLAYERS}}" >> .env
             echo "MINECRAFT_MOTD=${{ secrets.MINECRAFT_MOTD}}" >> .env
             echo "MINECRAFT_ICON=${{ secrets.MINECRAFT_ICON}}" >> .env
-            echo "Docker-Compose Up | Minecraft Server Starting"
-            cd /home/monga/save-game-server/minecraft && docker-compose up -d --build
+            echo "docker compose Up | Minecraft Server Starting"
+            cd /home/monga/save-game-server/minecraft && docker compose up -d --build
       
       - name: Delte .env File
         uses: appleboy/ssh-action@v0.1.10

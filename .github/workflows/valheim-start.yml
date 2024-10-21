@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Docker-Compose Up Server
+      - name: docker compose Up Server
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
@@ -19,5 +19,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/monga/save-game-server/valheim
-            echo "Docker-Compose Up | Valheim Server Starting"
-            cd /home/monga/save-game-server/valheim && docker-compose up -d
+            echo "docker compose Up | Valheim Server Starting"
+            cd /home/monga/save-game-server/valheim && docker compose up -d
